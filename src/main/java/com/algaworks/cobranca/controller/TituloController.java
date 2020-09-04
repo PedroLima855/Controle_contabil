@@ -1,24 +1,26 @@
 package com.algaworks.cobranca.controller;
 
-import java.util.Arrays;
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
+import com.algaworks.cobranca.model.StatusTitulo;
+import com.algaworks.cobranca.model.Titulo;
+import com.algaworks.cobranca.repository.Titulos;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.algaworks.cobranca.model.StatusTitulo;
-import com.algaworks.cobranca.model.Titulo;
-import com.algaworks.cobranca.repository.Titulos;
+import java.util.Arrays;
+import java.util.List;
 
 @Controller
 public class TituloController {
 	
-	@Autowired
+
 	private Titulos titulos;
+
+	public TituloController(Titulos titulos) {
+		this.titulos = titulos;
+	}
 
 	@RequestMapping(method = RequestMethod.GET, value = "/salvartitulo")
 	public ModelAndView novo() {
